@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0a0a09">
-  <meta name="description" content="청주대 CUHA, 서원대 SISL, 충북대 CERT가 모여 만든 보안 연합동아리 흑객입니다. 강의, CTF, 연구, 실습을 학교 상관없이 같이 합니다.">
+  <meta name="description" content="청주대 CUHA, 서원대 SISL, 충북대 CERT가 모여 만든 충북 대학 보안 연합동아리 흑객. 강의와 대회, 연구와 실습을 한 팀으로 해 나간다.">
   <meta property="og:title" content="흑객 黑客 — 충북 대학 보안 연합동아리">
-  <meta property="og:description" content="청주대 CUHA, 서원대 SISL, 충북대 CERT가 모여 만든 보안 연합동아리 흑객입니다.">
+  <meta property="og:description" content="청주대 CUHA, 서원대 SISL, 충북대 CERT가 모여 만든 충북 대학 보안 연합동아리 흑객.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://heukgaek-security.thoughtfulname1.chatgpt.site">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon.svg?v=imugi1" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=imugi1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Song+Myung&family=Noto+Serif+KR:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
@@ -40,17 +41,21 @@
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="#" aria-label="흑객 홈"><span class="brand-glyph">黑客</span><span class="brand-name">흑객</span></a>
-      <nav class="desktop-nav" aria-label="주요 메뉴"><a href="#about">소개</a><a href="#activities">활동</a><a href="#how">운영</a><a href="#join">모집</a></nav>
+      <a class="brand" href="#" aria-label="흑객 홈"><span class="logo-mark brand-mark" aria-hidden="true"><img class="logo-dark" src="assets/logo-ivory.svg" alt=""><img class="logo-light" src="assets/logo-ink.svg" alt=""></span><span class="brand-glyph">黑客</span><span class="brand-name">흑객</span></a>
       <div class="header-actions">
         <a class="button button-small header-apply" href="#join" aria-hidden="true" tabindex="-1">지원하기<svg class="icon"><use href="#arrow"/></svg></a>
         <button class="icon-button theme-toggle" type="button" aria-label="밝은 화면으로 전환" aria-pressed="true"><svg class="icon moon"><use href="#moon"/></svg><svg class="icon sun"><use href="#sun"/></svg></button>
         <span class="header-divider"></span><button class="lms-button" type="button" disabled title="LMS는 준비 중입니다">LMS<svg class="icon"><use href="#external"/></svg><span class="soon">준비 중</span></button>
-        <button class="icon-button menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button>
       </div>
     </div>
-    <nav id="mobile-nav" class="mobile-nav" aria-label="모바일 메뉴" hidden><a href="#about">소개</a><a href="#activities">활동</a><a href="#how">운영</a><a href="#join">모집</a></nav>
   </header>
+
+  <nav class="side-nav" aria-label="목차">
+    <a href="#about"><span class="sn-label">소개</span></a>
+    <a href="#activities"><span class="sn-label">활동</span></a>
+    <a href="#how"><span class="sn-label">운영</span></a>
+    <a href="#join"><span class="sn-label">모집</span></a>
+  </nav>
 
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
@@ -62,8 +67,8 @@
       </div>
       <div class="hero-bottom">
         <div class="hero-copy">
-          <p class="hero-headline" data-hero>세 학교 보안동아리가 모였습니다.</p>
-          <p class="hero-sub" data-hero>청주대 CUHA, 서원대 SISL, 충북대 CERT가 모여 만든 연합동아리입니다.<br>강의, CTF, 연구, 실습을 학교 상관없이 같이 합니다.</p>
+          <p class="hero-headline" data-hero>세 학교의 보안동아리가 <mark>한자리</mark>에 모였다.</p>
+          <p class="hero-sub" data-hero>청주대 CUHA, 서원대 SISL, 충북대 CERT가 함께 만든 연합동아리. <br>강의와 대회, 연구와 실습을 한 팀으로 해 나간다.</p>
         </div>
         <div class="hero-actions" data-hero>
           <a id="hero-apply" class="button" href="#join">지원하기<svg class="icon"><use href="#arrow"/></svg></a>
@@ -75,7 +80,7 @@
     <section class="members container" aria-labelledby="members-title">
       <div class="members-head">
         <h2 id="members-title" class="label" data-reveal>MEMBERS · 참여 동아리</h2>
-        <p class="members-line" data-reveal>세 동아리가 하나로 움직입니다.</p>
+        <p class="members-line" data-reveal>세 동아리가 하나로 움직인다.</p>
       </div>
       <ul class="member-list">
         <li data-reveal><span class="member-school">청주대학교</span><strong>CUHA</strong></li>
@@ -86,66 +91,64 @@
 
     <section id="about" class="about container section" aria-labelledby="about-title">
       <div class="section-head">
-        <span class="kicker" data-reveal>01 — ABOUT</span>
         <h2 id="about-title" class="heading" data-reveal>소개<svg class="brush-line" aria-hidden="true"><use href="#stroke"/></svg></h2>
       </div>
       <div class="about-body">
-        <p class="about-lead" data-reveal>흑객은 충북에 있는 세 대학 보안동아리가 모여 만든 연합동아리입니다.</p>
-        <p data-reveal>학교마다 따로 하던 강의, CTF, 연구, 실습을 한곳으로 모았습니다. 관심 분야가 같은 사람끼리 학교 구분 없이 팀을 짜고, 아는 것은 나누고 막히는 것은 같이 풉니다.</p>
-        <p data-reveal>이름은 해커를 뜻하는 중국어 黑客(흑객)에서 가져왔습니다.</p>
+        <p class="about-lead" data-reveal>흑객은 충북의 <mark>세 대학 보안동아리</mark>가 모여 만든 연합동아리다.</p>
+        <p data-reveal>학교마다 따로 하던 강의, CTF, 연구, 실습을 한곳으로 모았다. 관심사가 같은 사람끼리 팀을 짜고, 아는 것은 나누고 막히는 것은 같이 푼다.</p>
+        <p data-reveal>이름은 해커를 뜻하는 중국어 黑客에서 왔다.</p>
       </div>
     </section>
 
     <section id="activities" class="activities container section" aria-labelledby="activities-title">
       <div class="section-head">
-        <span class="kicker" data-reveal>02 — ACTIVITIES</span>
         <h2 id="activities-title" class="heading" data-reveal>활동<svg class="brush-line" aria-hidden="true"><use href="#stroke"/></svg></h2>
-        <p class="section-line" data-reveal>흑객의 다섯 가지 활동입니다.</p>
+        <p class="section-line" data-reveal>흑객의 다섯 가지 활동.</p>
       </div>
       <ol class="activity-list">
         <li class="activity" data-reveal>
-          <span class="activity-num">01</span>
+          <span class="activity-num" aria-label="1">一</span>
           <div class="activity-name"><span class="activity-label">Lecture</span><h3>정기 강의</h3></div>
           <div class="activity-detail">
-            <p>2주에 한 번 강의를 엽니다. 웹 해킹, 시스템 해킹, 리버싱, 포너블 가운데 그 분야를 잘 아는 사람이 강의를 맡고, 끝나면 바로 실습으로 넘어갑니다.</p>
-            <ul class="bullets"><li>분야: 웹, 시스템, 리버싱, 포너블</li><li>강의 뒤 실습 문제 풀이</li><li>세 동아리가 갖고 있던 강의 자료 공유</li></ul>
+            <p>2주에 한 번 강의를 연다. 웹 해킹, 시스템 해킹, 리버싱, 포너블 가운데 그 분야를 가장 잘 아는 사람이 강단에 서고, 강의가 끝나면 곧바로 실습으로 넘어간다.</p>
+            <ul class="bullets"><li>웹 · 시스템 · 리버싱 · 포너블</li><li>강의 뒤 실습 문제 풀이</li><li>세 동아리의 강의 자료 공유</li></ul>
             <ul class="tags"><li>Web</li><li>System</li><li>Reversing</li><li>Pwnable</li></ul>
           </div>
         </li>
         <li class="activity" data-reveal>
-          <span class="activity-num">02</span>
-          <div class="activity-name"><span class="activity-label">CTF</span><h3>CTF 참가</h3></div>
+          <span class="activity-num" aria-label="2">二</span>
+          <div class="activity-name"><span class="activity-label">CTF</span><h3>CTF 출전</h3></div>
           <div class="activity-detail">
-            <p>2주에 한 번 온라인 CTF에 연합팀으로 나갑니다. 세 학교 사람이 한 팀으로 문제를 나눠 풀고, 대회가 끝나면 푼 과정을 서로 공유합니다. 목표는 국내외 대회 입상입니다.</p>
-            <ul class="bullets"><li>온라인 대회 정기 참가</li><li>세 학교 연합팀</li><li>대회 후 풀이 공유</li></ul>
+            <p>2주에 한 번 온라인 CTF에 연합팀으로 나선다. 세 학교 사람이 한 팀이 되어 문제를 나눠 풀고, 대회가 끝나면 풀이를 서로 나눈다. 목표는 국내외 대회 입상.</p>
+            <ul class="bullets"><li>온라인 대회 정기 출전</li><li>세 학교 연합팀</li><li>대회 뒤 풀이 공유</li></ul>
             <ul class="tags"><li>연합팀</li><li>온라인</li><li>국내외 대회</li></ul>
           </div>
         </li>
         <li class="activity" data-reveal>
-          <span class="activity-num">03</span>
+          <span class="activity-num" aria-label="3">三</span>
           <div class="activity-name"><span class="activity-label">Platform</span><h3>교육 플랫폼 개발</h3></div>
           <div class="activity-detail">
-            <p>워게임과 CTF 문제를 직접 출제하는 보안 교육 플랫폼을 만듭니다. Dreamhack 같은 플랫폼이 목표이고, 출제부터 개발과 운영까지 직접 맡습니다.</p>
-            <ul class="bullets"><li>워게임·CTF 문제 직접 출제</li><li>실습 환경과 학습 자료 정리</li><li>사이트 개발과 운영</li></ul>
+            <p>워게임과 CTF 문제를 직접 출제하는 보안 교육 플랫폼을 만든다. Dreamhack 같은 플랫폼이 목표이고, 출제부터 개발과 운영까지 직접 맡는다.</p>
+            <ul class="bullets"><li>워게임·CTF 문제 출제</li><li>실습 환경과 학습 자료 정리</li><li>플랫폼 개발과 운영</li></ul>
             <ul class="tags"><li>워게임</li><li>문제 출제</li><li>개발·운영</li></ul>
           </div>
         </li>
         <li class="activity" data-reveal>
-          <span class="activity-num">04</span>
+          <span class="activity-num" aria-label="4">四</span>
           <div class="activity-name"><span class="activity-label">Research</span><h3>연구와 논문</h3></div>
           <div class="activity-detail">
-            <p>관심 있는 취약점이나 공격·방어 기법을 하나 정해 깊게 파고들고, 결과는 논문으로 정리합니다. 다른 학교 사람과 팀을 꾸려 공동 연구도 진행합니다.</p>
+            <p>관심 있는 취약점이나 공격·방어 기법을 하나 정해 깊이 파고들고, 그 결과를 논문으로 남긴다. 다른 학교 사람과 팀을 꾸려 공동 연구도 한다.</p>
             <ul class="bullets"><li>최신 취약점, 공격·방어 기법 연구</li><li>학교 간 공동 연구</li><li>논문 작성과 결과 공유</li></ul>
             <ul class="tags"><li>취약점 분석</li><li>공동 연구</li><li>논문</li></ul>
           </div>
         </li>
         <li class="activity" data-reveal>
-          <span class="activity-num">05</span>
+          <span class="activity-num" aria-label="5">五</span>
           <div class="activity-name"><span class="activity-label">Attack &amp; Defense</span><h3>모의해킹·공방 실습</h3></div>
           <div class="activity-detail">
-            <p>동아리별 실습 서버에서 직접 공격하고, 직접 막습니다. 취약점을 찾는 일과 고치는 일을 모두 다룹니다.</p>
-            <ul class="bullets"><li>실습 서버 기반 모의해킹</li><li>학교·동아리 간 공격·방어 실습</li><li>찾은 취약점 분석과 대응</li></ul>
-            <p class="safety-note"><svg class="icon"><use href="#check"/></svg>실습은 허가된 시스템과 전용 실습 환경에서 진행합니다.</p>
+            <p>동아리별 실습 서버에서 직접 공격하고, 직접 막는다. 취약점을 찾는 일과 고치는 일을 함께 다룬다.</p>
+            <ul class="bullets"><li>실습 서버 기반 모의해킹</li><li>동아리 간 공격·방어 실습</li><li>찾은 취약점 분석과 대응</li></ul>
+            <p class="safety-note"><svg class="icon"><use href="#check"/></svg>실습은 허가된 시스템과 전용 실습 환경에서만 한다.</p>
             <ul class="tags"><li>모의해킹</li><li>공격·방어</li><li>실습 서버</li></ul>
           </div>
         </li>
@@ -154,13 +157,12 @@
 
     <section id="how" class="how container section" aria-labelledby="how-title">
       <div class="section-head">
-        <span class="kicker" data-reveal>03 — SCHEDULE</span>
         <h2 id="how-title" class="heading" data-reveal>운영 방식<svg class="brush-line" aria-hidden="true"><use href="#stroke"/></svg></h2>
-        <p class="section-line" data-reveal>학교도 시간표도 달라서 평소에는 온라인으로 활동하고, 한 달에 한 번 오프라인으로 모입니다.</p>
+        <p class="section-line" data-reveal>학교도 시간표도 다르니 평소에는 온라인으로 활동하고, 한 달에 한 번 오프라인으로 모인다.</p>
       </div>
       <dl class="schedule">
         <div class="schedule-row" data-reveal><dt>정기 강의</dt><dd>온라인 강의와 실습</dd><dd class="freq">격주</dd></div>
-        <div class="schedule-row" data-reveal><dt>CTF</dt><dd>온라인 대회에 연합팀으로 참가</dd><dd class="freq">격주</dd></div>
+        <div class="schedule-row" data-reveal><dt>CTF</dt><dd>온라인 대회에 연합팀으로 출전</dd><dd class="freq">격주</dd></div>
         <div class="schedule-row" data-reveal><dt>오프라인 모임</dt><dd>세 동아리가 직접 만나는 자리</dd><dd class="freq">월 1회</dd></div>
         <div class="schedule-row" data-reveal><dt>프로젝트·연구</dt><dd>평소엔 온라인으로, 필요하면 따로 모임</dd><dd class="freq">상시</dd></div>
       </dl>
@@ -168,9 +170,8 @@
 
     <section id="join" class="join container section" aria-labelledby="join-title">
       <div class="section-head">
-        <span class="kicker" data-reveal>04 — JOIN</span>
         <h2 id="join-title" class="heading" data-reveal>모집<svg class="brush-line" aria-hidden="true"><use href="#stroke"/></svg></h2>
-        <p class="section-line" data-reveal>첫 모집은 세 동아리 회원을 대상으로 합니다.</p>
+        <p class="section-line" data-reveal>첫 모집은 세 동아리 회원을 대상으로 한다.</p>
       </div>
       <div class="join-grid">
         <div class="join-block" data-reveal>
@@ -184,21 +185,21 @@
         <div class="join-block" data-reveal>
           <h3>지원 방법</h3>
           <ol class="steps">
-            <li><span>1</span><div><h4>지원서 작성</h4><p>구글 폼으로 관심 분야와 지원 동기를 받습니다.</p></div></li>
-            <li><span>2</span><div><h4>XSS 문제 풀기</h4><p>XSS 기초 문제를 하나 풀면 됩니다.</p></div></li>
+            <li><span>1</span><div><h4>지원서 작성</h4><p>구글 폼에 관심 분야와 지원 동기를 적는다.</p></div></li>
+            <li><span>2</span><div><h4>XSS 문제 풀기</h4><p>XSS 기초 문제 하나를 푼다.</p></div></li>
           </ol>
-          <p class="notice"><i></i>지원 링크와 일정은 추후 공지합니다.</p>
+          <p class="notice"><i></i>지원 링크와 일정은 추후 공지.</p>
         </div>
       </div>
       <div class="join-banner" data-reveal>
-        <p>흑객에서 같이 공부할 사람을 모집합니다.</p>
+        <p>흑객에서 <mark>함께 공부할 사람</mark>을 모집한다.</p>
         <button class="button" type="button" data-apply>지원하기<svg class="icon"><use href="#arrow"/></svg></button>
       </div>
     </section>
 
     <section class="closing container" aria-label="맺음말">
-      <p class="closing-line" data-reveal>충북에서 보안을 공부한다면,<br>흑객입니다.</p>
-      <p class="closing-sign" data-reveal><span>黑客</span>흑객</p>
+      <p class="closing-line" data-reveal>충북에서 보안을 공부한다면,<br><mark>흑객</mark>.</p>
+      <div class="closing-sign" data-reveal><span class="logo-mark sign-mark" aria-hidden="true"><img class="logo-dark" src="assets/logo-ivory.svg" alt=""><img class="logo-light" src="assets/logo-ink.svg" alt=""></span><p><span>黑客</span>흑객</p></div>
     </section>
   </main>
 
@@ -210,9 +211,9 @@
 
   <dialog id="application-dialog" aria-labelledby="dialog-title">
     <button class="dialog-close icon-button" type="button" aria-label="안내 닫기">×</button>
-    <span class="dialog-glyph" aria-hidden="true">客</span>
-    <h2 id="dialog-title">지원 링크는 추후 공개합니다.</h2>
-    <p>모집 일정은 소속 동아리 공지로 안내합니다.</p>
+    <span class="logo-mark dialog-mark" aria-hidden="true"><img class="logo-dark" src="assets/logo-ivory.svg" alt=""><img class="logo-light" src="assets/logo-ink.svg" alt=""></span>
+    <h2 id="dialog-title">지원 링크는 아직 공개 전이다.</h2>
+    <p>모집 일정은 소속 동아리 공지로 안내한다.</p>
     <button class="button dialog-confirm" type="button">확인<svg class="icon"><use href="#check"/></svg></button>
   </dialog>
 </body>
