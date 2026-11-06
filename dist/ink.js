@@ -31,7 +31,7 @@
     inkFade: 1.15,          // per second (exp) — trail lingers ~1.5–2s then bleeds away
     heal: 7.5,              // per second pull of the glyph back to shape (high = glyph stays put)
     brushInk: 0.34,
-    brushForce: 0.08
+    brushForce: 0.1
   };
 
   /* ---------- GL helpers ---------- */
@@ -370,11 +370,11 @@ void main(){
     const target = Math.min(1, Math.max(0.32, 1.1 - speed * 0.22));
     const prevW = brush.width;
     brush.width += (target - brush.width) * 0.35;
-    const toR = w => { const sigma = 0.0011 + w * 0.0034; return 2 * sigma * sigma; };
+    const toR = w => { const sigma = 0.0016 + w * 0.0051; return 2 * sigma * sigma; };
     const prev = [brush.px, brush.py], cur = [brush.x, brush.y];
     splat(ink, prev, cur, [CONFIG.brushInk, 0, 0], toR(prevW), toR(brush.width), 0.85, 1.0);
     const fs = CONFIG.brushForce / Math.max(dt, 1 / 240);
-    force(prev, cur, dx * velocity.w * fs, dy * velocity.h * fs, 0.00022);
+    force(prev, cur, dx * velocity.w * fs, dy * velocity.h * fs, 0.00035);
     brush.px = brush.x; brush.py = brush.y;
   }
 
