@@ -264,7 +264,11 @@ void main(){
   function resize() {
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     const cw = Math.round(innerWidth * dpr), ch = Math.round(innerHeight * dpr);
-    if (cw === canvas.width && ch === canvas.height && velocity) return false;
+    if (velocity && cw === canvas.width) {
+      // Mobile URL bars resize the viewport while scrolling; ignore small height changes so
+      // the ink is not wiped (the canvas just stretches by a few percent).
+      if (ch === canvas.height || Math.abs(ch - canvas.height) / canvas.height < 0.22) return false;
+    }
     canvas.width = cw; canvas.height = ch;
     W = innerWidth; H = innerHeight; aspect = W / H;
 
@@ -292,7 +296,7 @@ void main(){
     const heroH = hero ? Math.min(hero.offsetHeight, H) : H;
     const scale = w / W;
     let size, cx = W / 2, cy;
-    if (vertical) { size = Math.min(W * 0.78, heroH * 0.36); cy = heroH * 0.44; }
+    if (vertical) { size = Math.min(W * 0.54, heroH * 0.222); cy = heroH * 0.36; }
     else { size = Math.min(heroH * 0.68, W * 0.37); cy = heroH * 0.45; }
     c.save();
     c.scale(scale, scale);
@@ -349,15 +353,23 @@ void main(){
 
   /* ---------- pointer (the brush) ---------- */
   const brush = { x: 0.5, y: 0.5, px: 0.5, py: 0.5, moved: false, active: false, width: 0.5, lastMove: 0 };
-  function onMove(e) {
-    const x = e.clientX / W, y = 1 - e.clientY / H;
+  function moveTo(cx, cy) {
+    const x = cx / W, y = 1 - cy / H;
     if (!brush.active) { brush.px = x; brush.py = y; brush.active = true; }
     brush.x = x; brush.y = y; brush.moved = true; brush.lastMove = performance.now();
   }
-  window.addEventListener('pointermove', onMove, { passive: true });
-  window.addEventListener('pointerdown', onMove, { passive: true });
-  document.addEventListener('pointerleave', () => { brush.active = false; });
-  window.addEventListener('blur', () => { brush.active = false; });
+  const lift = () => { brush.active = false; brush.moved = false; };
+  // Mouse / pen: the brush follows the pointer.
+  window.addEventListener('pointermove', e => { if (e.pointerType !== 'touch') moveTo(e.clientX, e.clientY); }, { passive: true });
+  window.addEventListener('pointerdown', e => { if (e.pointerType !== 'touch') moveTo(e.clientX, e.clientY); }, { passive: true });
+  // Touch: pointer events stop once the browser starts scrolling, touch events keep coming,
+  // so the brush keeps painting under the finger while the page scrolls.
+  window.addEventListener('touchstart', e => { lift(); const t = e.touches[0]; if (t) moveTo(t.clientX, t.clientY); }, { passive: true });
+  window.addEventListener('touchmove', e => { const t = e.touches[0]; if (t) moveTo(t.clientX, t.clientY); }, { passive: true });
+  window.addEventListener('touchend', lift, { passive: true });
+  window.addEventListener('touchcancel', lift, { passive: true });
+  document.addEventListener('pointerleave', lift);
+  window.addEventListener('blur', lift);
 
   function strokeBrush(dt) {
     if (!brush.moved) return;
@@ -370,7 +382,7 @@ void main(){
     const target = Math.min(1, Math.max(0.32, 1.1 - speed * 0.22));
     const prevW = brush.width;
     brush.width += (target - brush.width) * 0.35;
-    const toR = w => { const sigma = 0.0016 + w * 0.0051; return 2 * sigma * sigma; };
+    const toR = w => { const sigma = 0.0039 + w * 0.0122; return 2 * sigma * sigma; };
     const prev = [brush.px, brush.py], cur = [brush.x, brush.y];
     splat(ink, prev, cur, [CONFIG.brushInk, 0, 0], toR(prevW), toR(brush.width), 0.85, 1.0);
     const fs = CONFIG.brushForce / Math.max(dt, 1 / 240);

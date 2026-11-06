@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>흑객 로고 — 이무기</title>
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Song+Myung&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;font-family:'Song Myung',serif;background:#1a1a18;color:#efe8d9}
+  .grid{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+  .panel{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:56px;padding:64px 24px}
+  .dark{background:#0a0a09;color:#efe8d9}
+  .light{background:#f7f5f0;color:#0d0d0c}
+  .mark{width:min(360px,70vw)}
+  .mark svg{width:100%;height:auto;display:block}
+  .lockup{display:flex;align-items:center;gap:22px}
+  .lockup .m{width:92px}
+  .lockup .m svg{width:100%;display:block}
+  .word{display:flex;flex-direction:column;gap:6px}
+  .word b{font-family:'Ma Shan Zheng',serif;font-weight:400;font-size:64px;line-height:.9}
+  .word span{font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.32em;font-size:13px;opacity:.7}
+  .small{display:flex;gap:28px;align-items:center}
+  .small div{width:48px}.small div:nth-child(2){width:32px}.small div:nth-child(3){width:20px}
+  .small svg{width:100%;display:block}
+  @media(max-width:800px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grid">
+  <section class="panel dark">
+    <div class="mark" data-src="heukgaek-mark-ivory.svg"></div>
+    <div class="lockup"><div class="m" data-src="heukgaek-mark-ivory.svg"></div><div class="word"><b>黑客</b><span>HEUKGAEK</span></div></div>
+    <div class="small"><div data-src="heukgaek-mark-ivory.svg"></div><div data-src="heukgaek-mark-ivory.svg"></div><div data-src="heukgaek-mark-ivory.svg"></div></div>
+  </section>
+  <section class="panel light">
+    <div class="mark" data-src="heukgaek-mark-ink.svg"></div>
+    <div class="lockup"><div class="m" data-src="heukgaek-mark-ink.svg"></div><div class="word"><b>黑客</b><span>HEUKGAEK</span></div></div>
+    <div class="small"><div data-src="heukgaek-favicon.svg"></div><div data-src="heukgaek-favicon.svg"></div><div data-src="heukgaek-favicon.svg"></div></div>
+  </section>
+</div>
+<script>
+  // Inline each SVG; give each copy unique ids so masks/filters don't collide.
+  let n = 0;
+  document.querySelectorAll('[data-src]').forEach(async el => {
+    const txt = await (await fetch(el.dataset.src)).text();
+    const k = 'i' + (n++);
+    el.innerHTML = txt.replace(/id="(ink|cut)"/g, `id="$1-${k}"`).replace(/url\(#(ink|cut)\)/g, `url(#$1-${k})`);
+  });
+</script>
+</body>
+</html>

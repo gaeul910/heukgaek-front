@@ -5,6 +5,8 @@ const SITE_CONFIG = Object.freeze({ applicationUrl: '' });
 
 const root = document.documentElement;
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+// ?static (review/screenshot mode): jump to anchors instantly instead of smooth-scrolling.
+if (new URLSearchParams(location.search).has('static')) root.style.scrollBehavior = 'auto';
 
 /* ---------- theme ---------- */
 const themeToggle = document.querySelector('.theme-toggle');
@@ -39,23 +41,12 @@ function syncHeader() { header.classList.toggle('scrolled', window.scrollY > 12)
 window.addEventListener('scroll', () => { if (!scrollPending) { scrollPending = true; requestAnimationFrame(syncHeader); } }, { passive: true });
 syncHeader();
 
-/* ---------- mobile menu ---------- */
-const menuToggle = document.querySelector('.menu-toggle');
-const mobileNav = document.querySelector('#mobile-nav');
-function closeMenu() { menuToggle.setAttribute('aria-expanded', 'false'); menuToggle.setAttribute('aria-label', '메뉴 열기'); mobileNav.hidden = true; }
-menuToggle.addEventListener('click', () => {
-  const willOpen = menuToggle.getAttribute('aria-expanded') !== 'true';
-  menuToggle.setAttribute('aria-expanded', String(willOpen));
-  menuToggle.setAttribute('aria-label', willOpen ? '메뉴 닫기' : '메뉴 열기');
-  mobileNav.hidden = !willOpen;
-});
-mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && !mobileNav.hidden) { closeMenu(); menuToggle.focus(); } });
-document.addEventListener('click', e => { if (!header.contains(e.target)) closeMenu(); });
-matchMedia('(min-width: 1100px)').addEventListener('change', e => { if (e.matches) closeMenu(); });
-
-/* ---------- active nav ---------- */
-const navLinks = [...document.querySelectorAll('.desktop-nav a, #mobile-nav a')];
+/* ---------- side nav (vertical, desktop + mobile) ---------- */
+const sideNav = document.querySelector('.side-nav');
+const syncSideNav = () => sideNav.classList.toggle('on', window.scrollY > window.innerHeight * 0.55);
+window.addEventListener('scroll', syncSideNav, { passive: true });
+syncSideNav();
+const navLinks = [...sideNav.querySelectorAll('a')];
 const sectionObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
@@ -98,11 +89,13 @@ if (cursor && matchMedia('(hover: hover) and (pointer: fine)').matches) {
 }
 
 /* ---------- motion (GSAP) ---------- */
-function showHeroStatic() { root.classList.add('hero-ready'); }
+function showHeroStatic() { root.classList.add('hero-ready'); document.querySelectorAll('mark').forEach(m => m.classList.add('on')); }
 
 function initMotion() {
   const gsap = window.gsap;
-  if (!gsap || reduceMotion) { showHeroStatic(); return; }
+  // ?static shows everything at rest (no reveal animations) — handy for screenshots/reviews.
+  const isStatic = new URLSearchParams(location.search).has('static');
+  if (!gsap || reduceMotion || isStatic) { showHeroStatic(); return; }
   gsap.registerPlugin(window.ScrollTrigger);
 
   // Hero: header and copy arrive while the glyphs are being written.
@@ -112,8 +105,14 @@ function initMotion() {
     root.classList.add('hero-ready');
     const tl = gsap.timeline({ defaults: { ease: 'expo.out', duration: 1.4 } });
     tl.from('.site-header', { y: -24, opacity: 0, duration: 1.2 }, 0.2)
-      .fromTo('.hero [data-hero]', { y: 28, opacity: 0, filter: 'blur(6px)' }, { y: 0, opacity: 1, filter: 'blur(0px)', stagger: 0.09 }, 1.1);
+      .fromTo('.hero [data-hero]', { y: 28, opacity: 0, filter: 'blur(6px)' }, { y: 0, opacity: 1, filter: 'blur(0px)', stagger: 0.09 }, 1.1)
+      .call(() => document.querySelectorAll('.hero mark').forEach(m => m.classList.add('on')), null, 1.9);
   };
+
+  // Emphasis marks sweep in once their line has settled.
+  gsap.utils.toArray('main mark').filter(m => !m.closest('.hero')).forEach(m => {
+    window.ScrollTrigger.create({ trigger: m, start: 'top 80%', once: true, onEnter: () => setTimeout(() => m.classList.add('on'), 650) });
+  });
   window.addEventListener('ink:reveal', playHero, { once: true });
   if (root.classList.contains('ink-ready') || root.classList.contains('no-ink')) playHero();
   setTimeout(playHero, 2600); // never leave the hero empty
