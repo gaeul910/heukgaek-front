@@ -1,7 +1,7 @@
 'use strict';
 
-// Leave blank until the recruitment form is announced.
-const SITE_CONFIG = Object.freeze({ applicationUrl: '' });
+// "지원하기" opens the XSS challenge; solving it reveals the Google Form (set in challenge/challenge.js).
+const SITE_CONFIG = Object.freeze({ applicationUrl: 'challenge/' });
 
 const root = document.documentElement;
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -59,19 +59,9 @@ const sectionObserver = new IntersectionObserver(entries => {
 }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
 document.querySelectorAll('main section[id]').forEach(s => sectionObserver.observe(s));
 
-/* ---------- application dialog ---------- */
-const dialog = document.querySelector('#application-dialog');
-document.querySelectorAll('[data-apply]').forEach(button => button.addEventListener('click', () => {
-  if (SITE_CONFIG.applicationUrl) window.location.assign(SITE_CONFIG.applicationUrl);
-  else { dialog.showModal(); document.body.classList.add('dialog-open'); }
-}));
-dialog.querySelectorAll('.dialog-close, .dialog-confirm').forEach(b => b.addEventListener('click', () => dialog.close()));
-dialog.addEventListener('click', e => {
-  const r = dialog.getBoundingClientRect();
-  if (e.target === dialog && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)) dialog.close();
-});
-dialog.addEventListener('close', () => document.body.classList.remove('dialog-open'));
-if (SITE_CONFIG.applicationUrl) document.querySelectorAll('#hero-apply, .header-apply').forEach(l => { l.href = SITE_CONFIG.applicationUrl; });
+/* ---------- apply ---------- */
+// Hero and header buttons scroll to #join, where the flow is explained; the banner button starts the challenge.
+document.querySelectorAll('[data-apply]').forEach(button => button.addEventListener('click', () => window.location.assign(SITE_CONFIG.applicationUrl)));
 document.querySelector('#year').textContent = String(new Date().getFullYear());
 
 /* ---------- cursor ---------- */

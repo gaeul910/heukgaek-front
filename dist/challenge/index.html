@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The page itself never renders user input; the deliberately vulnerable part lives in sandbox.html,
+       which runs inside <iframe sandbox="allow-scripts"> (opaque origin, no access to this site). -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src 'self' https://docs.google.com; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0a0a09">
+  <meta name="robots" content="noindex">
+  <title>흑객 지원 문제</title>
+  <link rel="icon" href="../assets/favicon.svg?v=imugi1" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Song+Myung&family=Noto+Serif+KR:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="challenge.css">
+  <script src="theme.js"></script>
+  <script src="challenge.js" defer></script>
+</head>
+<body class="challenge-page">
+  <svg xmlns="http://www.w3.org/2000/svg" class="svg-definitions" aria-hidden="true">
+    <defs>
+      <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+      <symbol id="back" viewBox="0 0 24 24"><path d="M19 12H5m6 6-6-6 6-6"/></symbol>
+      <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+      <symbol id="external" viewBox="0 0 24 24"><path d="M7 17 17 7M6 7h11v11"/></symbol>
+      <symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+      <symbol id="moon" viewBox="0 0 24 24"><path d="M20.5 14A9 9 0 0 1 10 3.5 9 9 0 1 0 20.5 14Z"/></symbol>
+    </defs>
+  </svg>
+
+  <header class="ch-header">
+    <a class="ch-back" href="../#join"><svg class="icon"><use href="#back"/></svg>흑객으로 돌아가기</a>
+    <button class="icon-button theme-toggle" type="button" aria-label="밝은 화면으로 전환" aria-pressed="true"><svg class="icon moon"><use href="#moon"/></svg><svg class="icon sun"><use href="#sun"/></svg></button>
+  </header>
+
+  <main class="ch-main">
+    <section class="ch-intro">
+      <p class="eyebrow">지원 문제 · XSS 기초</p>
+      <h1 class="ch-title">한 줄 각오 미리보기</h1>
+      <p class="ch-lead">흑객 방명록에 남길 한 줄 각오를 미리 볼 수 있는 화면입니다. 그런데 입력한 내용이 그대로 화면에 들어가는 것 같아요.</p>
+      <p class="ch-goal"><svg class="icon"><use href="#check"/></svg><span>미리보기 안에서 <code>alert()</code>를 실행하면 성공입니다. 성공하면 지원서가 열립니다.</span></p>
+    </section>
+
+    <section class="ch-work" aria-label="문제 풀이">
+      <form class="ch-form" id="ch-form" autocomplete="off">
+        <label class="ch-label" for="ch-input">각오 입력</label>
+        <textarea id="ch-input" name="input" rows="4" maxlength="2000" spellcheck="false" placeholder="예: 올해는 CTF에서 꼭 한 문제 이상 풀겠습니다!"></textarea>
+        <div class="ch-actions">
+          <button class="button" type="submit">미리보기<svg class="icon"><use href="#arrow"/></svg></button>
+          <span class="ch-status" id="ch-status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+
+      <div class="ch-preview">
+        <p class="ch-label">미리보기</p>
+        <div class="ch-frame-wrap" id="ch-frame-wrap"></div>
+      </div>
+    </section>
+
+    <details class="ch-hints">
+      <summary>막히면 힌트 보기</summary>
+      <ol>
+        <li>입력한 글자를 <code>&lt;b&gt;굵게&lt;/b&gt;</code>처럼 써 보세요. 태그가 글자로 보이나요, 아니면 HTML로 처리되나요?</li>
+        <li>미리보기는 입력값을 <code>innerHTML</code>로 넣습니다. 이렇게 넣은 <code>&lt;script&gt;</code> 태그는 실행되지 않아요.</li>
+        <li>태그에는 <code>onerror</code>, <code>onload</code> 같은 이벤트 핸들러 속성을 붙일 수 있습니다. 일부러 실패하는 이미지를 떠올려 보세요.</li>
+      </ol>
+    </details>
+
+    <section class="ch-success" id="ch-success" hidden tabindex="-1" aria-labelledby="ch-success-title">
+      <p class="eyebrow">성공</p>
+      <h2 id="ch-success-title" class="ch-success-title">풀었습니다. <mark class="on">환영해요.</mark></h2>
+      <p class="ch-lead">아래 지원서를 작성해 주세요. 지원서에 방금 사용한 페이로드를 함께 적어야 합니다.</p>
+      <div class="ch-payload">
+        <p class="ch-label">사용한 페이로드</p>
+        <pre id="ch-payload"></pre>
+        <button class="button button-small" type="button" id="ch-copy">복사<svg class="icon"><use href="#check"/></svg></button>
+      </div>
+      <div class="ch-form-slot" id="ch-form-slot"></div>
+    </section>
+  </main>
+
+  <footer class="ch-footer">
+    <span>이 문제는 이 페이지의 격리된 미리보기 안에서만 동작합니다. 다른 사이트나 서비스를 대상으로 시도하지 마세요.</span>
+  </footer>
+</body>
+</html>

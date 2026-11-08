@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<!-- Deliberately vulnerable preview for the recruitment XSS challenge.
+     It only renders input while running as a sandboxed iframe (opaque origin), so a payload
+     here can never reach the main site's origin, storage, or other visitors.
+     No network: connect/img/form/frame are all blocked; inline script is allowed so handlers fire. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'none'; media-src 'none'; connect-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="robots" content="noindex">
+<title>미리보기</title>
+<style>
+  :root{color-scheme:dark;--paper:#0a0a09;--ink:#efe8d9;--ink-2:rgba(239,232,217,.62);--line:rgba(239,232,217,.16)}
+  :root.light{color-scheme:light;--paper:#f7f5f0;--ink:#0d0d0c;--ink-2:rgba(13,13,12,.6);--line:rgba(13,13,12,.16)}
+  html,body{margin:0;height:100%}
+  body{background:var(--paper);color:var(--ink);font:16px/1.7 'Noto Serif KR','AppleMyungjo','Batang',serif;padding:22px 24px;box-sizing:border-box;word-break:keep-all;overflow-wrap:anywhere}
+  .card{border-left:2px solid var(--ink);padding:4px 0 4px 18px}
+  .who{font-size:12px;letter-spacing:.12em;color:var(--ink-2);margin:0 0 6px}
+  .msg{font-size:18px;margin:0}
+  .empty{color:var(--ink-2)}
+  .blocked{color:var(--ink-2);font-size:14px}
+</style>
+</head>
+<body>
+<div class="card">
+  <p class="who">GUESTBOOK · 미리보기</p>
+  <p class="msg" id="msg"><span class="empty">아직 입력한 내용이 없습니다.</span></p>
+</div>
+<script>
+(function () {
+  'use strict';
+  var parentWin = window.parent;
+  // Refuse to render unless we are a sandboxed child (opaque origin). Opened directly or framed
+  // without the sandbox, this page would share the site's origin, so it stays inert.
+  if (parentWin === window || window.origin !== 'null') {
+    document.getElementById('msg').innerHTML = '<span class="blocked">이 미리보기는 지원 문제 페이지 안에서만 동작합니다.</span>';
+    return;
+  }
+  var reported = false;
+  function solved(kind) {
+    if (!reported) { reported = true; parentWin.postMessage({ type: 'heukgaek-xss-solved', via: String(kind) }, '*'); }
+  }
+  // Sandboxed frames can't show dialogs anyway; report the call to the challenge page instead.
+  window.alert = function () { solved('alert'); };
+  window.confirm = function () { solved('confirm'); return true; };
+  window.prompt = function () { solved('prompt'); return ''; };
+
+  window.addEventListener('message', function (e) {
+    if (e.source !== parentWin || !e.data || e.data.type !== 'heukgaek-preview') return;
+    if (e.data.theme === 'light') document.documentElement.classList.add('light');
+    var text = String(e.data.input || '');
+    var out = document.getElementById('msg');
+    // The bug: input goes straight into innerHTML.
+    out.innerHTML = text || '<span class="empty">아직 입력한 내용이 없습니다.</span>';
+  });
+  parentWin.postMessage({ type: 'heukgaek-sandbox-ready' }, '*');
+})();
+</script>
+</body>
+</html>

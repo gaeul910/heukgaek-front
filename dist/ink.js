@@ -409,7 +409,7 @@ void main(){
     root.classList.add('ink-ready');
     window.dispatchEvent(new CustomEvent('ink:reveal'));
   }
-  const fontReady = document.fonts ? document.fonts.load('400 120px "Ma Shan Zheng"', '黑客') : Promise.resolve();
+  const fontReady = document.fonts ? document.fonts.load('400 120px "Ma Shan Zheng"', '黑客').catch(() => null) : Promise.resolve();
   Promise.race([fontReady, new Promise(r => setTimeout(r, 2500))]).then(() => {
     if (document.fonts && !document.fonts.check('400 100px "Ma Shan Zheng"', '黑客')) {
       // font never arrived: keep the HTML glyph visible instead
