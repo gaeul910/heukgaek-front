@@ -15,6 +15,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Song+Myung&family=Noto+Serif+KR:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style id="members-heading-layout">.members .members-head{align-self:center;text-align:center}</style>
+  <style id="about-copy-font">.about-body p+p{font-size:inherit}</style>
   <title>흑객 黑客 — 충북 대학 보안 연합동아리</title>
   <script>try{document.documentElement.dataset.theme=localStorage.getItem('heukgaek-theme')||'dark'}catch(e){}document.documentElement.classList.add('js')</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -80,7 +82,7 @@
     <section class="members container" aria-labelledby="members-title">
       <div class="members-head">
         <h2 id="members-title" class="label" data-reveal>MEMBERS · 참여 동아리</h2>
-        <p class="members-line" data-reveal>학교는 셋, 팀은 하나입니다.</p>
+
       </div>
       <ul class="member-list">
         <li data-reveal><span class="member-school">청주대학교</span><strong>CUHA</strong></li>
@@ -94,7 +96,7 @@
         <h2 id="about-title" class="heading" data-reveal>소개<svg class="brush-line" aria-hidden="true"><use href="#stroke"/></svg></h2>
       </div>
       <div class="about-body">
-        <p class="about-lead" data-reveal>흑객은 충북의 <mark>세 대학 보안동아리</mark>가 함께 만든 연합동아리입니다.</p>
+
         <p data-reveal>세 동아리가 공동으로 강의와 CTF 활동을 진행합니다. 관심 분야가 같은 회원들은 학교에 관계없이 연구·개발 팀을 꾸릴 수 있습니다.</p>
         <p data-reveal>혼자 공부하다 막히는 문제가 있다면 함께 고민할 동료를 찾을 수 있습니다. 공부한 내용과 문제 풀이를 나누며 서로 배웁니다.</p>
       </div>
@@ -110,7 +112,7 @@
           <span class="activity-num" aria-label="1">一</span>
           <div class="activity-name"><span class="activity-label">Lecture</span><h3>정기 강의</h3></div>
           <div class="activity-detail">
-            <p>2주에 한 번 강의를 엽니다. 웹 해킹, 시스템 해킹, 리버싱, 포너블을 다룹니다. 해당 분야를 공부한 회원이 강의를 맡고, 강의 후에는 관련 문제를 풀어 봅니다.</p>
+            <p>2주에 한 번 강의를 엽니다. 웹 해킹, 시스템 해킹, 리버싱, 포너블을 다룹니다. 회원들이 공부한 내용을 강의로 공유하고, 이어서 관련 문제를 풀어 봅니다.</p>
             <ul class="bullets"><li>웹 · 시스템 · 리버싱 · 포너블</li><li>강의 직후 실습 문제 풀이</li><li>세 동아리의 강의 자료 공유</li></ul>
             <ul class="tags"><li>Web</li><li>System</li><li>Reversing</li><li>Pwnable</li></ul>
           </div>
@@ -135,7 +137,7 @@
         </li>
         <li class="activity" data-reveal>
           <span class="activity-num" aria-label="4">四</span>
-          <div class="activity-name"><span class="activity-label">Research</span><h3>연구와 논문</h3></div>
+          <div class="activity-name"><span class="activity-label">Research</span><h3>보안 연구·논문 작성</h3></div>
           <div class="activity-detail">
             <p>관심 있는 취약점이나 공격·방어 기법을 연구하고, 연구 내용을 논문으로 정리합니다. 다른 학교 회원과 공동 연구도 진행합니다.</p>
             <ul class="bullets"><li>최신 취약점, 공격·방어 기법 연구</li><li>학교 간 공동 연구</li><li>논문 작성과 결과 공유</li></ul>
@@ -188,7 +190,7 @@
             <li><span>1</span><div><h4>XSS 문제 풀기</h4><p>지원하기를 누르면 XSS 기초 문제가 열립니다. 문제를 해결하면 지원서로 이동합니다.</p></div></li>
             <li><span>2</span><div><h4>지원서 작성</h4><p>구글 폼 지원서에 관심 분야와 지원 동기를 적어 주세요.</p></div></li>
           </ol>
-          <p class="notice"><i></i>모집 일정은 소속 동아리 공지로 안내합니다.</p>
+          <p class="notice"><i></i>모집 일정은 소속 동아리 공지에서 확인해 주세요.</p>
         </div>
       </div>
       <div class="join-banner" data-reveal>
