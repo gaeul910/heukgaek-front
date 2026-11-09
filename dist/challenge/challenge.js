@@ -2,7 +2,7 @@
 
 // Google Form for applications. Paste the full "보내기 → 링크" URL here.
 // A docs.google.com/forms/... URL is also embedded on the page; a forms.gle short link opens in a new tab.
-const FORM_URL = '';
+const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSe9p9_ouDcdgJk5tpJcNrdD7edCfxyv-AWie1U_zlZXQpTV0g/viewform'; // forms.gle/N8ZNDU1CXcNMJfA37
 
 const root = document.documentElement;
 const form = document.querySelector('#ch-form');
