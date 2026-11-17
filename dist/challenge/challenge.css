@@ -1,13 +1,14 @@
-/* 흑객 지원 문제 — builds on ../styles.css tokens and buttons. */
+/* INTRUDER 지원 문제: builds on ../styles.css tokens and buttons. */
 .challenge-page{min-height:100vh;display:flex;flex-direction:column}
 .ch-header{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px;padding-inline:var(--gutter)}
 .ch-back{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-2);transition:color .2s}
 .ch-back:hover{color:var(--ink)}
 .ch-back .icon{width:18px;height:18px}
+.ch-mark{width:44px;height:24px}
 
 .ch-main{flex:1;width:min(880px,100% - var(--gutter)*2);margin:0 auto;padding:clamp(24px,6vh,72px) 0 80px;display:grid;gap:clamp(40px,6vh,64px)}
 .ch-intro{display:grid;gap:18px}
-.ch-title{font-family:var(--serif);font-weight:900;font-size:clamp(36px,6vw,64px);line-height:1.1;letter-spacing:-.045em}
+.ch-title{font-family:var(--serif);font-weight:700;font-size:clamp(36px,6vw,64px);line-height:1.1;letter-spacing:-.045em}
 .ch-lead{font-size:16.5px;color:var(--ink-2);max-width:620px}
 .ch-goal{display:flex;gap:12px;align-items:flex-start;padding:16px 18px;border:1px solid var(--line-strong);border-radius:14px;font-size:15px;max-width:620px}
 .ch-goal .icon{margin-top:3px}
@@ -29,7 +30,7 @@ code{padding:1px 6px;border-radius:5px;background:var(--line)}
 
 .ch-success{display:grid;gap:18px;padding-top:clamp(32px,5vh,56px);border-top:1px solid var(--line-strong);outline:none}
 .ch-success[hidden]{display:none}
-.ch-success-title{font-family:var(--serif);font-weight:900;font-size:clamp(30px,4.6vw,48px);line-height:1.2;letter-spacing:-.04em}
+.ch-success-title{font-family:var(--serif);font-weight:700;font-size:clamp(30px,4.6vw,48px);line-height:1.2;letter-spacing:-.04em}
 .ch-payload{display:grid;gap:0;justify-items:start}
 .ch-payload pre{width:100%;margin:0 0 14px;padding:14px 16px;border:1px solid var(--line-strong);border-radius:12px;white-space:pre-wrap;word-break:break-all;max-height:200px;overflow:auto}
 .ch-form-slot{display:grid;gap:20px;justify-items:start;margin-top:8px}

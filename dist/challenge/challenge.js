@@ -14,23 +14,6 @@ const payloadOut = document.querySelector('#ch-payload');
 const copyButton = document.querySelector('#ch-copy');
 const formSlot = document.querySelector('#ch-form-slot');
 
-/* ---------- theme (shared with the main site) ---------- */
-const themeToggle = document.querySelector('.theme-toggle');
-const themeColor = document.querySelector('meta[name="theme-color"]');
-function syncTheme() {
-  const isDark = root.dataset.theme === 'dark';
-  themeToggle.setAttribute('aria-label', isDark ? '밝은 화면으로 전환' : '어두운 화면으로 전환');
-  themeToggle.setAttribute('aria-pressed', String(isDark));
-  themeColor.content = isDark ? '#0a0a09' : '#f7f5f0';
-}
-syncTheme();
-themeToggle.addEventListener('click', () => {
-  root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-  try { localStorage.setItem('heukgaek-theme', root.dataset.theme); } catch (_) { /* storage may be unavailable */ }
-  syncTheme();
-  render(lastInput);
-});
-
 /* ---------- sandboxed preview ---------- */
 // Each preview gets a fresh sandboxed frame: scripts may run inside it, but it has an opaque
 // origin, so nothing in it can read or change this page, the main site, or its storage.
@@ -103,7 +86,7 @@ function showForm() {
     embed.searchParams.set('embedded', 'true');
     const f = document.createElement('iframe');
     f.className = 'ch-gform';
-    f.title = '흑객 지원서';
+    f.title = 'INTRUDER 지원서';
     f.src = embed.href;
     f.loading = 'lazy';
     formSlot.append(f);
