@@ -1,25 +1,39 @@
-"""Rebuild dist/assets/fonts/pretendard-subset.woff2 with only the characters the site uses.
+"""Rebuild the site's self-hosted fonts, cut down to only the characters the site uses.
 
-Run this after changing any text in dist/ (HTML or JS). Characters missing from the subset
-still render, in the visitor's system font, so a forgotten run looks slightly off but never breaks.
+Run this after changing any text in dist/ (HTML or JS):
 
     pip install fonttools brotli
-    curl -LO https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/woff2/PretendardVariable.woff2
-    python3 tools/subset_font.py PretendardVariable.woff2
+    python tools/subset_font.py
+
+Sources live in tools/fonts-src/ (all SIL OFL 1.1; licenses alongside):
+  - SUIT Variable       body and Korean headlines       github.com/sun-typeface/SUIT
+  - Departure Mono      pixel display + code (Latin)    github.com/rektdeckard/departure-mono
+  - Galmuri11           pixel Korean for mono labels    github.com/quiple/galmuri
+
+Characters missing from a subset still render in the visitor's system font, so a forgotten run
+looks slightly off but never breaks.
 """
 import pathlib
 import string
-import sys
 
 from fontTools import subset
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
-OUT = DIST / "assets" / "fonts" / "pretendard-subset.woff2"
+SRC = ROOT / "tools" / "fonts-src"
+OUT = DIST / "assets" / "fonts"
+EXTRA = "·•⇄→←↑↓…‘’“”–—©"
+
+# (source file, output file, which characters, OpenType features to keep)
+FONTS = [
+    ("SUIT-Variable.woff2", "suit-subset.woff2", "site", "kern,liga,calt,tnum"),
+    ("DepartureMono-Regular.woff2", "departure-subset.woff2", "ascii", "kern"),
+    ("Galmuri11.woff2", "galmuri11-subset.woff2", "site", "kern"),
+]
 
 
 def site_text():
-    chars = set(string.printable) | set("·•⇄→←↑↓…‘’“”–—©")
+    chars = set(string.printable) | set(EXTRA)
     for path in sorted(DIST.rglob("*")):
         if path.suffix in {".html", ".js"}:
             chars |= set(path.read_text(encoding="utf-8"))
@@ -27,19 +41,19 @@ def site_text():
 
 
 def main():
-    if len(sys.argv) != 2:
-        sys.exit(__doc__)
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    text = site_text()
-    subset.main([
-        sys.argv[1],
-        f"--text={text}",
-        "--flavor=woff2",
-        "--layout-features=kern,liga,calt,tnum",
-        "--no-hinting",
-        f"--output-file={OUT}",
-    ])
-    print(f"{len(text)} characters -> {OUT.relative_to(ROOT)} ({OUT.stat().st_size // 1024} KB)")
+    OUT.mkdir(parents=True, exist_ok=True)
+    texts = {"site": site_text(), "ascii": "".join(c for c in string.printable if c.isprintable()) + EXTRA}
+    for src, out, which, features in FONTS:
+        dest = OUT / out
+        subset.main([
+            str(SRC / src),
+            f"--text={texts[which]}",
+            "--flavor=woff2",
+            f"--layout-features={features}",
+            "--no-hinting",
+            f"--output-file={dest}",
+        ])
+        print(f"{len(texts[which]):4d} characters -> {dest.relative_to(ROOT)} ({dest.stat().st_size // 1024} KB)")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,8 @@
-/* INTRUDER 043: light, blue accent, rounded cards. One self-hosted font (Pretendard Variable cut to the site's characters by tools/subset_font.py); mono is the system stack. */
-@font-face{font-family:'Pretendard Subset';src:url(assets/fonts/pretendard-subset.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+/* INTRUDER 043: light, blue accent, rounded cards. Self-hosted fonts cut to the site's characters by tools/subset_font.py:
+   SUIT (body, Korean headlines), Departure Mono (pixel display + code), Galmuri11 (pixel Hangul inside mono labels). */
+@font-face{font-family:'SUIT Subset';src:url(assets/fonts/suit-subset.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Departure Mono';src:url(assets/fonts/departure-subset.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Galmuri11';src:url(assets/fonts/galmuri11-subset.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
 :root{
   color-scheme:light;
   --bg:#f0f1fa;
@@ -16,8 +19,8 @@
   --gutter:max(5vw,20px);
   --maxw:1320px;
   --header-h:72px;
-  --sans:'Pretendard Subset',-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
-  --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace;
+  --sans:'SUIT Subset',-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --mono:'Departure Mono','Galmuri11',ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace;
   --ease:cubic-bezier(.16,1,.3,1);
   /* names the challenge page (challenge/challenge.css) reads */
   --paper:var(--bg);
@@ -131,6 +134,11 @@ mark{background:none;color:var(--blue)}
 .stat-desc{color:var(--text-2);font-size:15px}
 .stat-accent{background:var(--blue);color:#fff}
 .stat-accent .stat-desc{color:rgba(255,255,255,.82)}
+/* all blocks look the same; the one under the pointer turns blue (keeps the reveal transition) */
+.stat{transition:background-color .25s var(--ease),color .25s var(--ease)}
+.js .stat.reveal{transition:opacity .9s var(--ease) var(--d,0s),transform .9s var(--ease) var(--d,0s),background-color .25s var(--ease),color .25s var(--ease)}
+.stat:hover{background:var(--blue);color:#fff}
+.stat:hover .stat-desc{color:rgba(255,255,255,.82)}
 
 /* join */
 .steps{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -184,3 +192,14 @@ mark{background:none;color:var(--blue)}
   .about-body{font-size:16.5px}
   .header-actions .button-small{padding:0 14px}
 }
+
+/* ---------- pointer effects (cursor.js); decoration only ---------- */
+.fx-grid{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:-1}
+.fx-magnet{translate:var(--mx,0px) var(--my,0px);transition:translate .35s var(--ease),transform .25s var(--ease),box-shadow .25s,background-color .25s}
+@media print{.fx-grid{display:none}}
+
+/* ---------- pixel type ---------- */
+.hero-title,.cta-title{font-family:'Departure Mono','Galmuri11',monospace;font-weight:400;letter-spacing:-.02em;line-height:1}
+.hero-title{font-size:clamp(40px,7.4vw,118px)}
+.cta-title{font-size:clamp(36px,6.6vw,100px)}
+.eyebrow,.hero-meta,.scroll-hint,.section-label,.member-num,.tags,.step-num,.cta-code,.lms{font-size:12px;letter-spacing:0;font-synthesis:none}
