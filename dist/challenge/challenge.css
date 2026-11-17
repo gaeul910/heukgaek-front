@@ -1,4 +1,4 @@
-/* 흑객 지원 문제: builds on ../styles.css tokens and buttons. */
+/* INTRUDER 지원 문제: builds on ../styles.css tokens and buttons. */
 .challenge-page{min-height:100vh;display:flex;flex-direction:column}
 .ch-header{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px;padding-inline:var(--gutter)}
 .ch-back{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-2);transition:color .2s}

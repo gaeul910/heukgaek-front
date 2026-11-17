@@ -1,4 +1,4 @@
-/* 흑객 043: light, blue accent, rounded cards. One self-hosted font (Pretendard Variable cut to the site's characters by tools/subset_font.py); mono is the system stack. */
+/* INTRUDER 043: light, blue accent, rounded cards. One self-hosted font (Pretendard Variable cut to the site's characters by tools/subset_font.py); mono is the system stack. */
 @font-face{font-family:'Pretendard Subset';src:url(assets/fonts/pretendard-subset.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
 :root{
   color-scheme:light;
@@ -63,7 +63,7 @@ mark{background:none;color:var(--blue)}
 .site-header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s}
 .site-header.scrolled{background:rgba(240,241,250,.85);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 var(--line)}
 .header-inner{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:24px}
-.brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:-.03em}
+.brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:19px;letter-spacing:.01em}
 .brand-mark{width:44px;height:24px}
 .site-nav{display:flex;gap:2px;padding:4px;border-radius:999px;background:rgba(255,255,255,.75);box-shadow:inset 0 0 0 1px var(--line)}
 .site-nav a{padding:7px 16px;border-radius:999px;font-size:14px;color:var(--text-2);transition:background .25s,color .25s}
@@ -146,7 +146,7 @@ mark{background:none;color:var(--blue)}
 /* footer */
 .site-footer{padding:clamp(80px,10vw,140px) 0 32px}
 .footer-inner{display:grid;grid-template-columns:1fr auto;gap:12px 32px;align-items:center;padding-top:32px;border-top:1px solid var(--line)}
-.footer-brand{display:flex;align-items:center;gap:14px;font-size:30px;font-weight:700;letter-spacing:-.03em}
+.footer-brand{display:flex;align-items:center;gap:14px;font-size:30px;font-weight:700;letter-spacing:0}
 .footer-brand img{width:66px;height:36px}
 .back-top{display:inline-flex;align-items:center;gap:8px;justify-self:end;font-size:14px;color:var(--text-2);transition:color .2s}
 .back-top:hover{color:var(--blue)}

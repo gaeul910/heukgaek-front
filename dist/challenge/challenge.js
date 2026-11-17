@@ -86,7 +86,7 @@ function showForm() {
     embed.searchParams.set('embedded', 'true');
     const f = document.createElement('iframe');
     f.className = 'ch-gform';
-    f.title = '흑객 지원서';
+    f.title = 'INTRUDER 지원서';
     f.src = embed.href;
     f.loading = 'lazy';
     formSlot.append(f);
