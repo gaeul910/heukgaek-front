@@ -1,6 +1,6 @@
 /* INTRUDER 043: light, blue accent, rounded cards. Self-hosted fonts cut to the site's characters by tools/subset_font.py:
-   SUIT (body, Korean headlines), Departure Mono (pixel display + code), Galmuri11 (pixel Hangul inside mono labels). */
-@font-face{font-family:'SUIT Subset';src:url(assets/fonts/suit-subset.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+   Wanted Sans (body, Korean headlines), Departure Mono (pixel display + code), Galmuri11 (pixel Hangul inside mono labels). */
+@font-face{font-family:'Wanted Sans Subset';src:url(assets/fonts/wanted-subset.woff2) format('woff2');font-weight:400 1000;font-style:normal;font-display:swap}
 @font-face{font-family:'Departure Mono';src:url(assets/fonts/departure-subset.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'Galmuri11';src:url(assets/fonts/galmuri11-subset.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
 :root{
@@ -19,7 +19,7 @@
   --gutter:max(5vw,20px);
   --maxw:1320px;
   --header-h:72px;
-  --sans:'SUIT Subset',-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --sans:'Wanted Sans Subset',-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
   --mono:'Departure Mono','Galmuri11',ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace;
   --ease:cubic-bezier(.16,1,.3,1);
   /* names the challenge page (challenge/challenge.css) reads */

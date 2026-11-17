@@ -6,7 +6,7 @@ Run this after changing any text in dist/ (HTML or JS):
     python tools/subset_font.py
 
 Sources live in tools/fonts-src/ (all SIL OFL 1.1; licenses alongside):
-  - SUIT Variable       body and Korean headlines       github.com/sun-typeface/SUIT
+  - Wanted Sans Variable  body and Korean headlines     github.com/wanteddev/wanted-sans
   - Departure Mono      pixel display + code (Latin)    github.com/rektdeckard/departure-mono
   - Galmuri11           pixel Korean for mono labels    github.com/quiple/galmuri
 
@@ -26,7 +26,7 @@ EXTRA = "·•⇄→←↑↓…‘’“”–—©"
 
 # (source file, output file, which characters, OpenType features to keep)
 FONTS = [
-    ("SUIT-Variable.woff2", "suit-subset.woff2", "site", "kern,liga,calt,tnum"),
+    ("WantedSansVariable.woff2", "wanted-subset.woff2", "site", "kern,liga,calt,tnum"),
     ("DepartureMono-Regular.woff2", "departure-subset.woff2", "ascii", "kern"),
     ("Galmuri11.woff2", "galmuri11-subset.woff2", "site", "kern"),
 ]
