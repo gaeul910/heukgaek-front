@@ -6,9 +6,8 @@ Run this after changing any text in dist/ (HTML or JS):
     python tools/subset_font.py
 
 Sources live in tools/fonts-src/ (all SIL OFL 1.1; licenses alongside):
-  - Wanted Sans Variable  body and Korean headlines     github.com/wanteddev/wanted-sans
-  - Departure Mono      pixel display + code (Latin)    github.com/rektdeckard/departure-mono
-  - Galmuri11           pixel Korean for mono labels    github.com/quiple/galmuri
+  - Galmuri11 / Galmuri11 Bold  all Korean text (pixel)     github.com/quiple/galmuri
+  - Departure Mono              pixel display + code (Latin) github.com/rektdeckard/departure-mono
 
 Characters missing from a subset still render in the visitor's system font, so a forgotten run
 looks slightly off but never breaks.
@@ -26,9 +25,9 @@ EXTRA = "·•⇄→←↑↓…‘’“”–—©"
 
 # (source file, output file, which characters, OpenType features to keep)
 FONTS = [
-    ("WantedSansVariable.woff2", "wanted-subset.woff2", "site", "kern,liga,calt,tnum"),
     ("DepartureMono-Regular.woff2", "departure-subset.woff2", "ascii", "kern"),
     ("Galmuri11.woff2", "galmuri11-subset.woff2", "site", "kern"),
+    ("Galmuri11-Bold.woff2", "galmuri11-bold-subset.woff2", "site", "kern"),
 ]
 
 
