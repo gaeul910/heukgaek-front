@@ -128,8 +128,9 @@ mark{background:none;color:var(--blue)}
 
 /* about: founding reasons */
 .reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(36px,4.4vw,64px)}
-.reason{display:flex;flex-direction:column;gap:10px;min-height:240px;padding:28px;border-radius:var(--radius);background:var(--surface)}
-.reason-num{margin-bottom:auto;color:var(--blue)}
+.reason{display:flex;flex-direction:column;gap:10px;padding:28px 28px 32px;border-radius:var(--radius);background:var(--surface)}
+/* content hangs from the top so the three titles line up whatever the description length */
+.reason-num{margin-bottom:56px;color:var(--blue)}
 .reason h3{font-size:clamp(22px,2vw,28px);line-height:1.25;letter-spacing:-.03em}
 .reason p{color:var(--text-2)}
 
@@ -205,7 +206,7 @@ mark{background:none;color:var(--blue)}
 }
 @media (max-width:640px){
   .member-list,.steps,.reasons,.goals,.outcomes{grid-template-columns:1fr}
-  .reason,.goal{min-height:0}
+  .goal{min-height:0}
   .reason-num,.goal-num{margin-bottom:16px}
   .member-num{margin-bottom:16px}
   .activity:nth-child(n){grid-column:1/-1}
