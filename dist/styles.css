@@ -1,8 +1,8 @@
 /* INTRUDER 043: light, blue accent, rounded cards. Self-hosted fonts cut to the site's characters by tools/subset_font.py:
    Galmuri11 + Galmuri11 Bold (all Korean, pixel), Departure Mono (Latin pixel display + code). Same type as the deck. */
-@font-face{font-family:'Departure Mono';src:url(assets/fonts/departure-subset.woff2) format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'Galmuri11';src:url(assets/fonts/galmuri11-subset.woff2) format('woff2');font-weight:100 500;font-style:normal;font-display:swap}
-@font-face{font-family:'Galmuri11';src:url(assets/fonts/galmuri11-bold-subset.woff2) format('woff2');font-weight:600 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Departure Mono';src:url(assets/fonts/departure-subset.woff2?v=eb75954e9f) format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Galmuri11';src:url(assets/fonts/galmuri11-subset.woff2?v=0ece9f10f0) format('woff2');font-weight:100 500;font-style:normal;font-display:swap}
+@font-face{font-family:'Galmuri11';src:url(assets/fonts/galmuri11-bold-subset.woff2?v=3ada9b829d) format('woff2');font-weight:600 900;font-style:normal;font-display:swap}
 :root{
   color-scheme:light;
   --bg:#f0f1fa;
