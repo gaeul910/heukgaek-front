@@ -1,8 +1,8 @@
 /* INTRUDER 043: light, blue accent, rounded cards. Self-hosted fonts cut to the site's characters by tools/subset_font.py:
    Galmuri11 + Galmuri11 Bold (all Korean, pixel), Departure Mono (Latin pixel display + code). Same type as the deck. */
 @font-face{font-family:'Departure Mono';src:url(assets/fonts/departure-subset.woff2?v=eb75954e9f) format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'Galmuri11';src:url(assets/fonts/galmuri11-subset.woff2?v=0ece9f10f0) format('woff2');font-weight:100 500;font-style:normal;font-display:swap}
-@font-face{font-family:'Galmuri11';src:url(assets/fonts/galmuri11-bold-subset.woff2?v=3ada9b829d) format('woff2');font-weight:600 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Galmuri11';src:url(assets/fonts/galmuri11-subset.woff2?v=9084e3c4d8) format('woff2');font-weight:100 500;font-style:normal;font-display:swap}
+@font-face{font-family:'Galmuri11';src:url(assets/fonts/galmuri11-bold-subset.woff2?v=17897e3cd5) format('woff2');font-weight:600 900;font-style:normal;font-display:swap}
 :root{
   color-scheme:light;
   --bg:#f0f1fa;
@@ -113,8 +113,7 @@ mark{background:none;color:var(--blue)}
 .activity-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
 .card{display:flex;flex-direction:column;gap:14px;padding:10px 10px 28px;border-radius:var(--radius);background:var(--surface);transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
 .card:hover{transform:translateY(-6px);box-shadow:0 28px 56px -32px rgba(26,47,251,.45)}
-.activity:nth-child(-n+2){grid-column:span 3}
-.activity:nth-child(n+3){grid-column:span 2}
+.activity{grid-column:span 2}
 .card-visual{--dot:rgba(11,12,16,.14);display:grid;place-items:center;aspect-ratio:16/9;margin-bottom:6px;padding:16px;border-radius:12px;background:var(--surface-2) radial-gradient(var(--dot) 1px,transparent 1.5px) 0 0/18px 18px;transition:background-color .45s var(--ease)}
 .card-visual code{font-family:var(--mono);font-size:clamp(15px,1.6vw,24px);font-weight:600;letter-spacing:-.01em;text-align:center;transition:color .45s var(--ease)}
 .card:hover .card-visual{--dot:rgba(255,255,255,.22);background-color:var(--blue)}
@@ -181,6 +180,7 @@ mark{background:none;color:var(--blue)}
 .back-top{display:inline-flex;align-items:center;gap:8px;justify-self:end;font-size:14px;color:var(--text-2);transition:color .2s}
 .back-top:hover{color:var(--blue)}
 .footer-meta{grid-column:1/-1;color:var(--text-3);font-size:14px}
+.footer-mail{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
 
 /* ---------- reveal ---------- */
 .js .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease) var(--d,0s),transform .9s var(--ease) var(--d,0s)}
@@ -195,7 +195,6 @@ mark{background:none;color:var(--blue)}
 /* ---------- responsive ---------- */
 @media (max-width:1080px){
   .activity:nth-child(n){grid-column:span 3}
-  .activity:last-child{grid-column:1/-1}
   .stats,.outcomes{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:860px){

@@ -11,8 +11,8 @@
   <meta property="og:url" content="https://cifrar.cju.ac.kr/blackhack/">
   <link rel="icon" href="assets/favicon.svg?v=f0a23798a6" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=c7bb166faa">
-  <link rel="preload" href="assets/fonts/galmuri11-subset.woff2?v=0ece9f10f0" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=b98d91c6d5">
+  <link rel="preload" href="assets/fonts/galmuri11-subset.woff2?v=9084e3c4d8" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=507089743b">
   <title>INTRUDER · 충북 대학 보안 연합동아리</title>
   <script>document.documentElement.classList.add('js')</script>
   <script src="hero.js?v=c94fb418ad" defer></script>
@@ -36,9 +36,9 @@
       <a class="brand" href="#" aria-label="INTRUDER 홈"><img class="brand-mark" src="assets/logo.svg?v=ec0f5c1f3b" alt="" width="44" height="24"><span>INTRUDER</span></a>
       <nav class="site-nav" aria-label="주요 메뉴">
         <a href="#about">소개</a>
-        <a href="#goals">목표</a>
         <a href="#activities">활동</a>
         <a href="#how">운영</a>
+        <a href="#goals">목표</a>
         <a href="#join">모집</a>
       </nav>
       <div class="header-actions">
@@ -79,34 +79,16 @@
       <h2 id="about-title" class="section-label reveal">소개</h2>
       <p class="statement reveal">서로 다른 강점과 지식을 나누며 혼자서는 경험하기 어려운 것들을 함께 만들어갑니다.</p>
       <ul class="reasons">
-        <li class="reason reveal"><span class="reason-num">01</span><h3>대회 인원 부족</h3><p>한 학교 인원만으로는 CTF 팀을 꾸리기 어려웠습니다.</p></li>
-        <li class="reason reveal" style="--d:.08s"><span class="reason-num">02</span><h3>분야별 교육 인력 부족</h3><p>잘하는 분야 밖은 가르쳐 줄 사람이 없었습니다.</p></li>
-        <li class="reason reveal" style="--d:.16s"><span class="reason-num">03</span><h3>협업 경험 부족</h3><p>다른 사람과 한 팀으로 활동할 기회가 적었습니다.</p></li>
-      </ul>
-    </section>
-
-    <section id="goals" class="goals-section container section" aria-labelledby="goals-title">
-      <div class="section-head">
-        <h2 id="goals-title" class="section-label reveal">목표</h2>
-        <p class="section-title reveal">INTRUDER의 두 가지 목표</p>
-      </div>
-      <ul class="goals">
-        <li class="goal reveal"><span class="goal-num">01</span><h3>회원 취업</h3><p>대회 출전 기록, 논문, 보안 점검 보고서처럼 취업할 때 쓸 수 있는 실적을 쌓습니다.</p></li>
-        <li class="goal goal-dark reveal" style="--d:.08s"><span class="goal-num">02</span><h3>충북 보안 경쟁력</h3><p>세 학교의 강점을 나누고 함께 활동해 충북 지역의 보안 경쟁력을 높입니다.</p></li>
-      </ul>
-      <p class="section-label outcomes-label reveal">기대 효과</p>
-      <ul class="outcomes">
-        <li class="outcome reveal"><span class="outcome-code">CTF</span><h3>대회 출전 기록</h3><p>격주 연합팀 출전과 풀이</p></li>
-        <li class="outcome reveal" style="--d:.08s"><span class="outcome-code">KCI</span><h3>공동 연구 논문</h3><p>학기마다 최소 3편</p></li>
-        <li class="outcome reveal" style="--d:.16s"><span class="outcome-code">REPORT</span><h3>보안 점검 보고서</h3><p>실제 운영 환경 점검</p></li>
-        <li class="outcome reveal" style="--d:.24s"><span class="outcome-code">TEAM</span><h3>협업 경험</h3><p>세 학교 혼합 팀 활동</p></li>
+        <li class="reason reveal"><span class="reason-num">01</span><h3>연합CTF팀</h3><p>더 강한 CTF팀으로 대회 출전</p></li>
+        <li class="reason reveal" style="--d:.08s"><span class="reason-num">02</span><h3>자체 LMS 교육</h3><p>강의와 실습을 나눌 LMS 준비 중</p></li>
+        <li class="reason reveal" style="--d:.16s"><span class="reason-num">03</span><h3>협업</h3><p>더 많은 협업, 더 많은 기회</p></li>
       </ul>
     </section>
 
     <section id="activities" class="activities container section" aria-labelledby="activities-title">
       <div class="section-head">
         <h2 id="activities-title" class="section-label reveal">활동</h2>
-        <p class="section-title reveal">INTRUDER의 다섯 가지 활동</p>
+        <p class="section-title reveal">여섯 가지 활동</p>
       </div>
       <ol class="activity-grid">
         <li class="card activity reveal">
@@ -117,28 +99,34 @@
         </li>
         <li class="card activity reveal" style="--d:.08s">
           <div class="card-visual" aria-hidden="true"><code>flag{h4ck_t0g3th3r}</code></div>
-          <p class="tags">연합팀 · 격주 · 국내외 대회</p>
+          <p class="tags">격주 · 국내외 대회 · 풀이 공유</p>
           <h3>CTF 출전</h3>
-          <p class="desc">2주에 한 번 세 학교 연합팀으로 CTF에 출전합니다. 국내외 대회 입상을 노리고, 대회가 끝나면 풀이를 정리해 공유합니다.</p>
+          <p class="desc">2주에 한 번 CTF에 나갑니다. 국내외 대회 입상을 노리고, 끝나면 풀이를 정리해 공유합니다.</p>
         </li>
         <li class="card activity reveal">
           <div class="card-visual" aria-hidden="true"><code>$ cat paper.md</code></div>
           <p class="tags">취약점 분석 · 공동 연구 · KCI 논문</p>
           <h3>연구·논문</h3>
-          <p class="desc">학교를 섞어 연구팀을 구성합니다. 취약점과 공격·방어 기법을 연구하고, 학기마다 KCI 논문을 최소 3편 작성합니다.</p>
+          <p class="desc">학교를 섞어 팀을 짭니다. 취약점과 공격·방어 기법을 연구하고, 연합동아리 전체로 학기마다 KCI 논문 최소 3편을 씁니다.</p>
         </li>
         <li class="card activity reveal" style="--d:.08s">
           <div class="card-visual" aria-hidden="true"><code>$ sort -rn ranking.txt</code></div>
           <p class="tags">회원 순위 · 경쟁</p>
           <h3>내부 랭킹</h3>
-          <p class="desc">회원 간 순위를 매겨 서로의 실력을 겨룹니다. 경쟁하면서 실력을 키웁니다.</p>
+          <p class="desc">회원끼리 순위를 매겨 겨룹니다.</p>
         </li>
         <li class="card activity reveal" style="--d:.16s">
           <div class="card-visual" aria-hidden="true"><code>$ ./audit --report</code></div>
           <p class="tags">서버 점검 · 사이트 점검 · 보고서</p>
           <h3>보안 점검·보고서</h3>
-          <p class="desc">각 학교 동아리 서버를 점검하고, 매 학기 각 학교 사이트를 점검해 보고서를 제출합니다.</p>
+          <p class="desc">각 학교 동아리 서버를 점검합니다. 학기마다 학교 사이트도 점검해 보고서를 냅니다.</p>
           <p class="safety"><svg class="icon"><use href="#check"/></svg>학교의 허가와 협조를 받은 대상만 점검합니다.</p>
+        </li>
+        <li class="card activity reveal" style="--d:.24s">
+          <div class="card-visual" aria-hidden="true"><code>PUT /lms?by=us</code></div>
+          <p class="tags">직접 제작 · 준비 중</p>
+          <h3>자체 LMS 제작·운영</h3>
+          <p class="desc">회원 강의와 실습에 쓸 LMS를 직접 만들고 있습니다. 지금은 준비 중입니다.</p>
         </li>
       </ol>
     </section>
@@ -146,13 +134,31 @@
     <section id="how" class="how container section" aria-labelledby="how-title">
       <div class="section-head">
         <h2 id="how-title" class="section-label reveal">운영 방식</h2>
-        <p class="section-title reveal">INTRUDER의 활동 주기</p>
+        <p class="section-title reveal">활동 주기</p>
       </div>
       <ul class="stats">
-        <li class="stat reveal"><span class="freq">격주</span><h3>정기 강의</h3><p class="stat-desc">회원 강의와 관련 문제 풀이</p></li>
-        <li class="stat reveal" style="--d:.08s"><span class="freq">격주</span><h3>CTF</h3><p class="stat-desc">세 학교 연합팀으로 출전</p></li>
-        <li class="stat reveal" style="--d:.16s"><span class="freq">월 1회</span><h3>오프라인 모임</h3><p class="stat-desc">세 동아리 합동 모임</p></li>
-        <li class="stat reveal" style="--d:.24s"><span class="freq">매 학기</span><h3>보안 점검</h3><p class="stat-desc">각 학교 사이트 점검과 보고서 제출</p></li>
+        <li class="stat reveal"><span class="freq">격주</span><h3>정기 강의</h3><p class="stat-desc">강의 뒤 문제 풀이</p></li>
+        <li class="stat reveal" style="--d:.08s"><span class="freq">격주</span><h3>CTF</h3><p class="stat-desc">대회 출전, 풀이 공유</p></li>
+        <li class="stat reveal" style="--d:.16s"><span class="freq">월 1회</span><h3>오프라인 모임</h3><p class="stat-desc">세 학교가 한자리에</p></li>
+        <li class="stat reveal" style="--d:.24s"><span class="freq">매 학기</span><h3>보안 점검</h3><p class="stat-desc">학교 사이트 점검과 보고서</p></li>
+      </ul>
+    </section>
+
+    <section id="goals" class="goals-section container section" aria-labelledby="goals-title">
+      <div class="section-head">
+        <h2 id="goals-title" class="section-label reveal">목표</h2>
+        <p class="section-title reveal">두 가지 목표</p>
+      </div>
+      <ul class="goals">
+        <li class="goal reveal"><span class="goal-num">01</span><h3>회원 취업</h3><p>취업할 때 보여줄 활동 기록을 쌓습니다.</p></li>
+        <li class="goal goal-dark reveal" style="--d:.08s"><span class="goal-num">02</span><h3>충북 보안 경쟁력</h3><p>충북에서 함께 연구하고 가르칠 사람을 키웁니다.</p></li>
+      </ul>
+      <p class="section-label outcomes-label reveal">활동으로 쌓을 것</p>
+      <ul class="outcomes">
+        <li class="outcome reveal"><span class="outcome-code">CTF</span><h3>대회 출전 기록</h3><p>출전한 대회와 풀이</p></li>
+        <li class="outcome reveal" style="--d:.08s"><span class="outcome-code">KCI</span><h3>공동 연구 논문</h3><p>연합 전체 학기마다 최소 3편</p></li>
+        <li class="outcome reveal" style="--d:.16s"><span class="outcome-code">REPORT</span><h3>보안 점검 보고서</h3><p>학교 사이트 점검 결과</p></li>
+        <li class="outcome reveal" style="--d:.24s"><span class="outcome-code">TEAM</span><h3>협업 경험</h3><p>다른 학교 회원과 팀 연구</p></li>
       </ul>
     </section>
 
@@ -162,10 +168,10 @@
         <p class="section-title reveal">첫 모집 대상은 청주대 CUHA, 서원대 SISL, 충북대 CERT 회원입니다.</p>
       </div>
       <ol class="steps">
-        <li class="step reveal"><span class="step-num">STEP 01</span><h3>XSS 문제 풀기</h3><p>아래 '문제 풀러 가기'를 누르면 XSS 기초 문제가 열립니다. 문제를 풀면 같은 페이지에 지원서가 나타납니다.</p></li>
-        <li class="step reveal" style="--d:.08s"><span class="step-num">STEP 02</span><h3>지원서 작성</h3><p>구글 폼에 기본 정보와 지원 동기를 작성합니다. 지원 동기 끝에 사용한 페이로드를 함께 적어 주세요.</p></li>
+        <li class="step reveal"><span class="step-num">STEP 01</span><h3>XSS 문제 풀기</h3><p>아래 '문제 풀러 가기'를 누르면 XSS 기초 문제가 열립니다. 풀면 같은 페이지에 지원서가 나옵니다.</p></li>
+        <li class="step reveal" style="--d:.08s"><span class="step-num">STEP 02</span><h3>지원서 작성</h3><p>구글 폼에 기본 정보와 지원 동기를 적습니다. 지원 동기 끝에 사용한 페이로드도 적어 주세요.</p></li>
       </ol>
-      <p class="notice reveal">모집 일정은 소속 동아리 공지에서 확인해 주세요. 기업과 학교의 후원·협조도 환영합니다.</p>
+      <p class="notice reveal">모집 일정은 소속 동아리 공지에서 확인해 주세요.</p>
 
       <div class="cta reveal">
         <p class="cta-code">HTTP/1.1 401 Unauthorized</p>
@@ -180,6 +186,7 @@
       <p class="footer-brand"><img src="assets/logo.svg?v=ec0f5c1f3b" alt="" width="66" height="36"><span>INTRUDER</span></p>
       <a class="back-top" href="#">맨 위로<svg class="icon"><use href="#arrow-up"/></svg></a>
       <p class="footer-meta">충북 대학 보안 연합동아리 · CUHA · SISL · CERT</p>
+      <p class="footer-meta">기업·학교 후원 및 협조 문의 · <a class="footer-mail" href="mailto:ek.lim0223@gmail.com">ek.lim0223@gmail.com</a></p>
       <p class="footer-meta">© <span id="year">2026</span> INTRUDER. All rights reserved.</p>
     </div>
   </footer>
